@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
-        <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+        <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+
         <link type="text/css" rel="stylesheet" href="style.css">
 
         <title>Pig Game</title>
@@ -11,6 +12,23 @@
 
     <body>
         <div class="wrapper clearfix">
+          <div class="information">
+            <div class="rules">
+              <h1 class="red">How To Play</h1>
+              <p>The object of to game is the be the first player to the winning total.</p><br />
+              <p>Players can determine the winning total by entering a number in the "Winning Score" field and clicking on the "Winning Score" button.</p>
+              <p>The default Winning Score is 100.</p><br />
+              <p>Click the "Roll Dice" button to roll the dice.</p>
+              <p>The player can roll the dice as many times as they like.</p>
+              <p>When the player has a score they are happy with they can click the "Hold" button to "bank" their score.</p><br />
+              <p>When a player "holds" their score they forfeit their turn.</p><br />
+              <p>If a player rolls a 1 they forfeit their turn.</p><br />
+              <p>If a player rolls two 6's in a row they forfeit their turn AND lose all of their points.</p><br />
+              <p>To play again, click "New Game".</p><br /><br />
+              <button class="btn-exit-info">Play Game<i class="ion-ios-arrow-thin-right"></i></button>
+              <p class="red info-foot">HAVE FUN!</p>
+            </div>
+          </div>
             <div class="player-0-panel active">
                 <div class="player-name" id="name-0">Player 1</div>
                 <div class="player-score" id="score-0">43</div>
@@ -36,9 +54,12 @@
               <input type="text">Winning Score</input>
             </div>
 
+            <button class="btn-info"><i class="ion-information-circled"></i></button>
+
             <img src="dice-5.png" alt="Dice" class="dice">
         </div>
 
         <script src="app.js"></script>
+
     </body>
 </html>

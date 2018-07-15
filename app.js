@@ -121,6 +121,14 @@ function updateMessage() {
   }
 }
 
+document.querySelector('.btn-info').addEventListener('click', function() {
+  document.querySelector('.information').style.display = 'block';
+});
+
+document.querySelector('.btn-exit-info').addEventListener('click', function() {
+  document.querySelector('.information').style.display = 'none';
+});
+
 /*
 YOUR 3 CHALLENGES
 
