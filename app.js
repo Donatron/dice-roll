@@ -9,7 +9,7 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, gamePlaying;
+var scores, roundScore, activePlayer, gamePlaying, previousRoll, winningScore;
 
 init();
 
@@ -23,10 +23,13 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     diceDOM.style.display = 'block';
     diceDOM.src = 'dice-' + dice + '.png';
 
-    // 3. Update the round score IF the number was not 1
-    if (dice !== 1) {
-      // Add scores
+    // 3. Update the round score IF the number was not 1 and two 6's not rolled in a row
+    if (dice === 6 && previousRoll === 6) {
+      nextPlayer();
+    } else if (dice !== 1) {
+      // Add scores and update previous roll
       roundScore += dice;
+      previousRoll = dice;
       document.querySelector('#current-' + activePlayer).textContent = roundScore;
     } else {
       // Next player
@@ -45,7 +48,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
     // Check if the player won the game
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= winningScore) {
       document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
       document.querySelector('.dice').style.display = 'none';
       document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
@@ -80,6 +83,12 @@ function init() {
     roundScore = 0;
     gamePlaying = true;
 
+    if (!winningScore) {
+      winningScore = 100;
+    } else {
+      updateMessage();
+    }
+
     document.querySelector('.dice').style.display = 'none';
 
     document.getElementById('score-0').textContent = '0';
@@ -94,6 +103,19 @@ function init() {
     document.querySelector('.player-0-panel').classList.add('active');
     document.querySelector('.player-1-panel').classList.remove('active');
 
+}
+
+document.querySelector('.winning-score').addEventListener('click', function() {
+  // Get value of input field
+  winningScore = document.querySelector('.winning-score input').value;
+  updateMessage();
+});
+
+function updateMessage() {
+  if(winningScore) {
+    document.querySelector('.winning-score').innerHTML = '<em>First player to ' + winningScore + ' wins!';
+    document.querySelector('.winning-score').style.color = '#EB4D4D';
+  }
 }
 
 /*

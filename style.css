@@ -103,7 +103,8 @@ body {
     font-size: 30px;
 }
 
-button {
+button,
+.winning-score {
     position: absolute;
     width: 200px;
     left: 50%;
@@ -119,8 +120,26 @@ button {
     transition: background-color 0.3s, color 0.3s;
 }
 
+.winning-score {
+  width: 250px;
+  top: 531px;
+  display: flex;
+  align-content: center;
+}
+
+input {
+  margin-right: 15px;
+  height: 26px;
+  width: 60px;
+  font-family: Lato;
+  font-size: 20px;
+  border: solid 1px #EB4D4D;
+  transition: margin 0.3s;
+}
+
 button:hover { font-weight: 600; }
-button:hover i { margin-right: 20px; }
+button:hover i,
+.winning-score:hover input { margin-right: 20px; }
 
 button:focus {
     outline: none;
