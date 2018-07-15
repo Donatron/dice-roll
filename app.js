@@ -25,12 +25,15 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
     // 3. Update the round score IF the number was not 1 and two 6's not rolled in a row
     if (dice === 6 && previousRoll === 6) {
+      scores[activePlayer] = 0;
+      document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
       nextPlayer();
     } else if (dice !== 1) {
       // Add scores and update previous roll
       roundScore += dice;
       previousRoll = dice;
       document.querySelector('#current-' + activePlayer).textContent = roundScore;
+
     } else {
       // Next player
       nextPlayer();
