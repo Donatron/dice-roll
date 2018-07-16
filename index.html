@@ -7,7 +7,7 @@
 
         <link type="text/css" rel="stylesheet" href="style.css">
 
-        <title>Pig Game</title>
+        <title>Dice Roll</title>
     </head>
 
     <body>
@@ -22,8 +22,8 @@
               <p>The player can roll the dice as many times as they like.</p>
               <p>When the player has a score they are happy with they can click the "Hold" button to "bank" their score.</p><br />
               <p>When a player "holds" their score they forfeit their turn.</p><br />
-              <p>If a player rolls a 1 they forfeit their turn.</p><br />
-              <p>If a player rolls two 6's in a row they forfeit their turn AND lose all of their points.</p><br />
+              <p>If a player rolls a 1 on either of the dice they forfeit their turn.</p><br />
+              <p>If a player rolls two 6's they forfeit their turn AND lose all of their points.</p><br />
               <p>To play again, click "New Game".</p><br /><br />
               <button class="btn-exit-info">Play Game<i class="ion-ios-arrow-thin-right"></i></button>
               <p class="red info-foot">HAVE FUN!</p>
@@ -56,7 +56,8 @@
 
             <button class="btn-info"><i class="ion-information-circled"></i></button>
 
-            <img src="dice-5.png" alt="Dice" class="dice">
+            <img src="dice-5.png" alt="Dice" class="dice" id="dice-1">
+            <img src="dice-5.png" alt="Dice" class="dice" id="dice-2">
         </div>
 
         <script src="app.js"></script>

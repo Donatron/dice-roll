@@ -9,29 +9,30 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, gamePlaying, previousRoll, winningScore;
+var scores, roundScore, activePlayer, gamePlaying, winningScore;
 
 init();
 
 document.querySelector('.btn-roll').addEventListener('click', function() {
   if(gamePlaying) {
     // 1. Random number
-    var dice = Math.floor(Math.random() * 6) + 1;
+    var dice1 = Math.floor(Math.random() * 6) + 1;
+    var dice2 = Math.floor(Math.random() * 6) + 1;
 
     // 2. Display the result
-    var diceDOM = document.querySelector('.dice')
-    diceDOM.style.display = 'block';
-    diceDOM.src = 'dice-' + dice + '.png';
+    document.getElementById('dice-1').style.display = 'block';
+    document.getElementById('dice-2').style.display = 'block';
+    document.getElementById('dice-1').src = 'dice-' + dice1 + '.png';
+    document.getElementById('dice-2').src = 'dice-' + dice2 + '.png';
 
     // 3. Update the round score IF the number was not 1 and two 6's not rolled in a row
-    if (dice === 6 && previousRoll === 6) {
+    if (dice1 === 6 && dice2 === 6) {
       scores[activePlayer] = 0;
       document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
       nextPlayer();
-    } else if (dice !== 1) {
+    } else if (dice1 !== 1 && dice2 !== 1) {
       // Add scores and update previous roll
-      roundScore += dice;
-      previousRoll = dice;
+      roundScore += dice1 + dice2;
       document.querySelector('#current-' + activePlayer).textContent = roundScore;
 
     } else {
@@ -74,7 +75,8 @@ function nextPlayer() {
   document.querySelector('.player-0-panel').classList.toggle('active');
   document.querySelector('.player-1-panel').classList.toggle('active');
 
-  document.querySelector('.dice').style.display = 'none';
+  document.getElementById('dice-1').style.display = 'none';
+  document.getElementById('dice-2').style.display = 'none';
 
 }
 
@@ -92,7 +94,8 @@ function init() {
       updateMessage();
     }
 
-    document.querySelector('.dice').style.display = 'none';
+    document.getElementById('dice-1').style.display = 'none';
+    document.getElementById('dice-2').style.display = 'none';
 
     document.getElementById('score-0').textContent = '0';
     document.getElementById('score-1').textContent = '0';
